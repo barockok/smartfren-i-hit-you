@@ -7,6 +7,7 @@ gem 'rails', '3.2.8'
 
 gem 'sqlite3'
 gem 'mechanize'
+gem 'clockwork'
 
 # Gems used only for assets and not required
 # in production environments by default.
@@ -20,6 +21,9 @@ group :assets do
   gem 'uglifier', '>= 1.0.3'
 end
 
+group :development, :test do
+  gem 'rspec-rails'
+end
 gem 'jquery-rails'
 
 # To use ActiveModel has_secure_password
