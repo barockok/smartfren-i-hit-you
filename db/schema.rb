@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121103191932) do
+ActiveRecord::Schema.define(:version => 20121103200428) do
 
   create_table "active_packets", :force => true do |t|
     t.integer  "nomor_id"
@@ -25,10 +25,10 @@ ActiveRecord::Schema.define(:version => 20121103191932) do
   create_table "nomors", :force => true do |t|
     t.string   "nomer"
     t.string   "password"
-    t.boolean  "auto_subscribe",  :default => true
+    t.boolean  "auto_subscribe",  :default => false
     t.string   "default_package"
-    t.datetime "created_at",                        :null => false
-    t.datetime "updated_at",                        :null => false
+    t.datetime "created_at",                         :null => false
+    t.datetime "updated_at",                         :null => false
   end
 
   create_table "plan_pakets", :force => true do |t|
