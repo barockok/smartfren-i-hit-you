@@ -2,22 +2,21 @@ require 'spec_helper'
 
 describe ActivePacket do
   context 'create new activepacket' do
-    its(:expired){should be_false}
-    context 'nomor' do
-      let(:nomor){Nomor.new}
-      it 'should respond to nomor' do
-        subject.respond_to?(:nomor).should be_true
+    it '.expired be false' do ; subject.expired.should be_false ; end
+    it '.respond_to? :client_number' do
+      subject.respond_to?(:client_number).should be_true
+    end
+    context '.client_number' do
+      let(:client_number){ClientNumber.new}
+      it 'it client_number must be kind of ClientNumber' do
+        subject.client_number = client_number
+        subject.client_number.should be_kind_of(ClientNumber)
       end
       
-      it 'it nomor must be kind of Nomor' do
-        subject.nomor = nomor
-        subject.nomor.should be_kind_of(Nomor)
-      end
-      
-      it "it fail when nomer is have't id" do
-        subject.nomor = nomor
+      it "it fail when client_number is have't id" do
+        subject.client_number = client_number
         # subject.save!
-        subject.nomor.id.should be_nil
+        subject.client_number.id.should be_nil
       end
     end
 

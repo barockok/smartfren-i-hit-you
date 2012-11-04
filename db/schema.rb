@@ -11,18 +11,18 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121103200428) do
+ActiveRecord::Schema.define(:version => 20121104014909) do
 
   create_table "active_packets", :force => true do |t|
-    t.integer  "nomor_id"
+    t.integer  "client_number_id"
     t.string   "code"
     t.datetime "will_expired"
-    t.boolean  "expired",      :default => false
-    t.datetime "created_at",                      :null => false
-    t.datetime "updated_at",                      :null => false
+    t.boolean  "expired",          :default => false
+    t.datetime "created_at",                          :null => false
+    t.datetime "updated_at",                          :null => false
   end
 
-  create_table "nomors", :force => true do |t|
+  create_table "client_numbers", :force => true do |t|
     t.string   "nomer"
     t.string   "password"
     t.boolean  "auto_subscribe",  :default => false
@@ -31,13 +31,14 @@ ActiveRecord::Schema.define(:version => 20121103200428) do
     t.datetime "updated_at",                         :null => false
   end
 
-  create_table "plan_pakets", :force => true do |t|
-    t.integer  "nomor_id"
+  create_table "plan_packets", :force => true do |t|
+    t.integer  "client_number_id"
     t.string   "code"
-    t.boolean  "archive",    :default => false
+    t.boolean  "archive",           :default => false
     t.string   "status"
-    t.datetime "created_at",                    :null => false
-    t.datetime "updated_at",                    :null => false
+    t.datetime "created_at",                           :null => false
+    t.datetime "updated_at",                           :null => false
+    t.datetime "will_subscribe_at"
   end
 
 end
