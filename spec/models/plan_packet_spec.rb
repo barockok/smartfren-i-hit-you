@@ -17,6 +17,8 @@ describe PlanPacket do
       it 'respond_to?:client_number' do ;  subject.respond_to?(:client_number).should be_true ; end
       it 'client_number == ClientNumber' do ; subject.client_number.should be_kind_of(ClientNumber) ; end
     end
-    
   end
+  
+
+    
 end

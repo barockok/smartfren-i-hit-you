@@ -5,8 +5,7 @@ gem 'rails', '3.2.8'
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
-
-gem 'mechanize'
+gem 'smartfren' , :git => 'git@github.com:barock19/smartfren.git'
 gem 'clockwork'
 
 group :production do
@@ -28,8 +27,12 @@ end
 
 
 group :development, :test do
+  gem 'database_cleaner'
+  gem 'factory_girl_rails'
+  gem 'mocha', :require => false
   gem 'rspec-rails'
   gem 'sqlite3'
+ # gem 'smartfren_core' , :path => './../smartfren_core'
 end
 
 gem 'jquery-rails'
