@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121108010217) do
+ActiveRecord::Schema.define(:version => 20121108161353) do
 
   create_table "active_packets", :force => true do |t|
     t.integer  "client_number_id"
@@ -21,6 +21,7 @@ ActiveRecord::Schema.define(:version => 20121108010217) do
     t.datetime "created_at",                          :null => false
     t.datetime "updated_at",                          :null => false
     t.boolean  "notified",         :default => false
+    t.integer  "plan_packet_id"
   end
 
   create_table "client_numbers", :force => true do |t|

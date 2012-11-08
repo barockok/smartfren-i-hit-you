@@ -1,4 +1,14 @@
 class PlanPacket < ActiveRecord::Base
-  attr_accessible :code, :nomor_id, :will_subscribe_at, :archive
+  attr_accessible :code, :client_number_id, :will_subscribe_at, :archive
   belongs_to :client_number
+  def self.check_apply
+    current_time = Time.now
+    PlanPacket.where('will_subscribe_at < :current_time or will_subscribe_at = :current_time', {:current_time => current_time})
+    .each do |pp|
+      pp.update_attribute(:archive , true ) if pp.apply
+    end
+  end
+  def apply
+    ActivePacket.create(self.as_json(:only => [:code, :client_number_id]).merge({:plan_packet_id => id, :code => code }) ) if client_number.buy(code)
+  end
 end

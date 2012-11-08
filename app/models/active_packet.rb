@@ -1,6 +1,7 @@
 class ActivePacket < ActiveRecord::Base
-  attr_accessible :code, :expired, :nomor_id, :will_expired, :notified
+  attr_accessible :code, :expired, :client_number_id, :will_expired, :notified, :plan_packet_id
   belongs_to :client_number
+  belongs_to :plan_packet
   
   def self.five_minutes_togo_expired
     range = (Time.now+4.minute)..(Time.now+6.minute)

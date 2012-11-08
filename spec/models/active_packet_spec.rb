@@ -15,7 +15,8 @@ describe ActivePacket do
       #select random one, which wil be set as expired
       target = ActivePacket.last;
       target.update_attribute(:will_expired, (Time.now-2.minute))
-      ActivePacket.check_expired.count.should == 1
+      ActivePacket.check_expired
+      ActivePacket.where(:expired => true).count.should == 1
     end
     it "should find two" do
       #build little coll non expired
@@ -23,7 +24,8 @@ describe ActivePacket do
       #select random one, which wil be set as expired
       target = ActivePacket.limit(2);
       target.each{|ap| ap.update_attribute(:will_expired, (Time.now-2.minute)) }
-      ActivePacket.check_expired.count.should == 2
+      ActivePacket.check_expired
+      ActivePacket.where(:expired => true).count.should == 2
     end
     context 'when found' do
       it "should mark expired as true " do
@@ -35,7 +37,7 @@ describe ActivePacket do
       end
     end
   end
-  context 'when five_minutes_togo_expired', :focus => true do
+  context 'when five_minutes_togo_expired' do
     before(:each){build_20_activepacket}
     it("should be_true if found"){
       ActivePacket.last.update_attribute(:will_expired , Time.now+5.minute)

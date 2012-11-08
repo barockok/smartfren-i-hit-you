@@ -27,6 +27,7 @@ end
 
 
 group :development, :test do
+  gem 'autotest-rails'
   gem 'database_cleaner'
   gem 'factory_girl_rails'
   gem 'mocha', :require => false
